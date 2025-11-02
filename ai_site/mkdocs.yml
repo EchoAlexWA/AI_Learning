@@ -1,0 +1,12 @@
+site_name: Echo’s AI Journey
+theme:
+  name: material
+  palette:
+    scheme: slate
+nav:
+  - Home: index.md
+  - AI Notes:
+      - Reinforcement Learning: ai-notes/reinforcement-learning.md
+      - Gradient Boosting: ai-notes/gradient-boosting.md
+  - Projects:
+      - MoodleMate Planner: projects/moodlemate.md
