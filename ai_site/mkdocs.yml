@@ -6,7 +6,7 @@ theme:
 nav:
   - Home: index.md
   - AI Notes:
-      - Reinforcement Learning: ai-notes/reinforcement-learning.md
-      - Gradient Boosting: ai-notes/gradient-boosting.md
+      - Reinforcement Learning: ai_site/reinforcement-learning.md
+      - Gradient Boosting: ai_site/gradient-boosting.md
   - Projects:
       - MoodleMate Planner: projects/moodlemate.md
