@@ -97,3 +97,37 @@ $$
 
 This shows that the ordinary linear regression can be interpreted as finding the MLE of the parameters under the assumption of normally distributed errors, which justifies the use of the mean squared error as the loss function.
 
+ Note that the value of $𝜎^2$ does not affect the choice of $w$ and $b$.
+
+
+## Assumptions of Linear Regression
+1. **Linearity**: The relationship between *x* and the mean of *y* is linear.  
+
+2. **Homoscedasticity**: The variance of residual is the same for any value of *x*.  
+
+3. **Independence**: Observations are independent of each other.  
+
+4. **Normality of residuals**: For any fixed value of *x*, *y* is normally distributed, or we can say the residuals (errors) should follow a **normal distribution**.
+
+## Covariance Aspects
+For $x\in \mathbb{R}^d$ which is a random variable vector, we have
+$$
+\begin{aligned}
+\mathrm{Cov}(y, x) &= \mathrm{Cov}(w^T x + b, x) \\
+&= \mathrm{Cov}(w^T x, x) + \mathrm{Cov}(b, x) \\
+&= \mathrm{Cov}(w^T x, x) + 0 \\
+&= w^T \mathrm{Var}(x) \\
+\Rightarrow w &= \mathrm{Var}(x)^{-1}\mathrm{Cov}(x, y) \\
+\end{aligned}
+$$
+
+We can use unbiased sample covariance and variance to estimate $w$:
+$$
+\begin{aligned}
+\hat{w} &= \hat{\mathrm{Var}}(x)^{-1}\hat{\mathrm{Cov}}(x, y) \\
+&= \left(\frac{1}{n-1} \sum_{i=1
+}^{n} (x_i - \bar{x})(x_i - \bar{x})^T\right)^{-1} \left(\frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})\right) \\
+&= \left(\sum_{i=1}^{n} (x_i - \bar{x})(x_i - \bar{x})^T\right)^{-1} \left(\sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})\right) \\
+&= (X^T X - n \bar{x} \bar{x}^T)^{-1} (X^T Y - n \bar{x} \bar{y}) \\
+\end{aligned}
+$$
