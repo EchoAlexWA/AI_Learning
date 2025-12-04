@@ -207,10 +207,7 @@ Assuming a discount factor of ($\gamma = 0.9$), determine:
 #### (a)
 
 The optimal policy ($\pi^* : S \to A$)
-$$
-\pi^*(S_1) = a_1\\
-\pi^*(S_2) = a_2
-$$
+
 #### (b)
 
 The state-value function ($V^* : S \to \mathbb{R}$)
@@ -244,27 +241,93 @@ We solve the equations and get:
 $$
 \begin{aligned}
     v_1 &= \frac{350}{19}=18.421 \\
-    v_2 &= \frac{410}{19}=21.579
+    v_2 &= \frac{410}{19}=21.579 \\
+    Q^*(S_1, a_1) &= 0.9 \times \frac{350}{19} = \frac{315}{19} = 16.579 \\
+    Q^*(S_1, a_2) &= -1 + 0.9 \times \frac{410}{19} = \frac{296}{19} = 15.579 \\
+    Q^*(S_2, a_1) &= 1 + 0.9 \times \frac{410}{19} = \frac{379}{19} = 19.947 \\
+    Q^*(S_2, a_2) &= 5 + 0.9 \times \frac{350}{19} = \frac{365}{19} = 19.211 \\
 \end{aligned}
 $$
 
-
-
-### iii.
-
-Write the Q-values in a table (a.k.a. Q-table) as follows:
-
-| Q     | (a_1) | (a_2) |
-| ----- | ----- | ----- |
-| (S_1) |       |       |
-| (S_2) |       |       |
+$Q^*(S_1, a_2) > Q^*(S_1, a_1)$ and $Q^*(S_2, a_1) > Q^*(S_2, a_2)$, so the $a_2$ is the optimal action for both states.
+Optimal Policy:
+$$
+\pi^*(S_1) = a_2\\
+\pi^*(S_2) = a_2
+$$
 
 ---
 
 ### iv.
 
-Trace through the first few steps of the action-value function learning algorithm,
+Trace through the first few steps of the action-value function learning algorithm, 
 with all Q-values initially set to zero.
 Explain why it is necessary to force exploration through probabilistic choice of actions
 in order to ensure convergence to the true Q-values.
+
+Answer: If we always choose the action with the highest Q-value (greedy approach), we will 
+always choose a_1 in state S1.
+
+## Optimasisation
+
+
+### Question 1: Mutations
+
+In a genetic algorithm with 10 chromosomes, each 20 genes long, and a mutation rate of 0.01 (per gene), how many gene mutations are expected per generation?
+
+---
+
+$$
+\begin{aligned}
+\mathbb{E}(\text{mutations}) = \text{number of chromosomes} \times \text{genes per chromosome} \times \text{mutation rate} = \\10 \times 20 \times 0.01 = 2
+\end{aligned}
+$$
+
+### Question 2: Offspring fitness
+
+Suppose a genetic algorithm encodes solutions as 4-bit chromosomes, and the fitness function is
+
+\[
+f(b_1 b_2 b_3 b_4) = b_1 + 2 b_2 + 4 b_3 + 8 b_4 \quad (b_i \in {0,1})
+\]
+
+Given parent chromosomes
+
+* (A = 1100)
+* (B = 0011)
+
+After single-point crossover between the second and third bits, what is the fitness of the offspring?
+
+---
+Children after crossover:
+- Child 1: 11|11 = 1111
+- Child 2: 00|00 = 0000
+
+Fitness of Child 1:
+\[
+f(1111) = 1 + 2 + 4 + 8 = 15
+\]
+Fitness of Child 2:
+\[
+f(0000) = 0 + 0 + 0 + 0 = 0
+\]
+
+
+### Question 3: Tabu search
+
+Given a small optimisation problem:
+
+\[
+\text{Minimise } f(x) = x^2 - 4x + 4
+\]
+
+where (x) can take integer values between −10 and 10.
+
+Perform one iteration of the Tabu Search algorithm starting from (x = 0).
+
+Assume two neighbours, consisting of (x = -1) and (x = 1).
+
+What is the new value of (x) after the first iteration?
+
+---
 
